@@ -1139,8 +1139,17 @@ select.form-control {
 .experience__company {
   font-weight: var(--font-weight-medium);
   color: var(--color-primary);
-  display: block;
-  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0;
+}
+
+.company-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .experience__duration {
@@ -1466,6 +1475,11 @@ select.form-control {
 
   .hero__image {
     max-width: 300px;
+  }
+
+  .company-logo {
+    width: 64px;
+    height: 64px;
   }
 }
 
