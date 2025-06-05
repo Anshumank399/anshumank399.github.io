@@ -3,14 +3,14 @@
 // Data from the provided JSON
 const portfolioData = {
     "personalInfo": {
-        "name": "Alex Johnson",
-        "title": "Full Stack Developer & Designer",
-        "email": "alex.johnson@email.com",
-        "phone": "+1 (555) 123-4567",
-        "location": "San Francisco, CA",
-        "linkedin": "linkedin.com/in/alexjohnson",
-        "github": "github.com/alexjohnson",
-        "website": "alexjohnson.dev"
+        "name": "Anshuman Dey Kirty",
+        "title": "Data Engineer",
+        "email": "anshuman.kirty@gmail.com",
+        "phone": "+1 (312) 900-4299",
+        "location": "New York, NY",
+        "linkedin": "linkedin.com/in/anshuman-dey-kirty/",
+        "github": "github.com/Anshumank399",
+        "website": "anshumankirty.com"
     },
     "about": {
         "introduction": "I'm a passionate full-stack developer with 5+ years of experience creating digital solutions that bridge the gap between design and functionality. I specialize in modern web technologies and love turning complex problems into simple, beautiful, and intuitive designs.",
