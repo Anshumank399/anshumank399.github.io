@@ -59,60 +59,61 @@ const portfolioData = {
     "blogPosts": [
         {
             "id": 1,
-            "title": "Building Accessible Web Applications in 2025",
-            "excerpt": "A comprehensive guide to implementing WCAG 2.1 standards in modern web development, covering best practices for inclusive design.",
-            "date": "2025-05-15",
-            "readTime": "8 min read",
-            "category": "Accessibility",
-            "featured": true
+            "title": "Summer Internship at QuantumBlack AI by McKinsey",
+            "excerpt": "So here I am presenting my reflection on what was one of the most fulfilling summers as an intern at QuantumBlack AI, McKinsey.",
+            "date": "2022-09-30",
+            "readTime": "3 min read",
+            "category": "Experience",
+            "featured": true,
+            "mediumLink": "https://medium.com/@anshuman-kirty/summer-internship-experience-quantumblack-ai-by-mckinsey-903c753d8c6d"
         },
-        {
-            "id": 2,
-            "title": "The Future of CSS: What's Coming in 2025",
-            "excerpt": "Exploring new CSS features like container queries, cascade layers, and color functions that are changing how we style the web.",
-            "date": "2025-05-01",
-            "readTime": "6 min read",
-            "category": "CSS",
-            "featured": false
-        },
-        {
-            "id": 3,
-            "title": "Optimizing React Performance: Advanced Techniques",
-            "excerpt": "Deep dive into React optimization strategies including memoization, code splitting, and virtual scrolling for large applications.",
-            "date": "2025-04-20",
-            "readTime": "12 min read",
-            "category": "React",
-            "featured": true
-        },
-        {
-            "id": 4,
-            "title": "My Journey from Bootcamp to Senior Developer",
-            "excerpt": "Reflecting on the challenges, learnings, and growth that shaped my career in tech over the past 5 years.",
-            "date": "2025-04-05",
-            "readTime": "10 min read",
-            "category": "Career",
-            "featured": false
-        },
-        {
-            "id": 5,
-            "title": "Building a Design System from Scratch",
-            "excerpt": "How we created a scalable design system at TechCorp that improved development velocity and design consistency across 15+ products.",
-            "date": "2025-03-22",
-            "readTime": "15 min read",
-            "category": "Design",
-            "featured": true
-        },
-        {
-            "id": 6,
-            "title": "Serverless Architecture: Lessons Learned",
-            "excerpt": "Key insights from building and scaling serverless applications using AWS Lambda, including cost optimization and performance tips.",
-            "date": "2025-03-08",
-            "readTime": "9 min read",
-            "category": "Backend",
-            "featured": false
-        }
+        // {
+        //     "id": 2,
+        //     "title": "The Future of CSS: What's Coming in 2025",
+        //     "excerpt": "Exploring new CSS features like container queries, cascade layers, and color functions that are changing how we style the web.",
+        //     "date": "2025-05-01",
+        //     "readTime": "6 min read",
+        //     "category": "CSS",
+        //     "featured": false
+        // },
+        // {
+        //     "id": 3,
+        //     "title": "Optimizing React Performance: Advanced Techniques",
+        //     "excerpt": "Deep dive into React optimization strategies including memoization, code splitting, and virtual scrolling for large applications.",
+        //     "date": "2025-04-20",
+        //     "readTime": "12 min read",
+        //     "category": "React",
+        //     "featured": true
+        // },
+        // {
+        //     "id": 4,
+        //     "title": "My Journey from Bootcamp to Senior Developer",
+        //     "excerpt": "Reflecting on the challenges, learnings, and growth that shaped my career in tech over the past 5 years.",
+        //     "date": "2025-04-05",
+        //     "readTime": "10 min read",
+        //     "category": "Career",
+        //     "featured": false
+        // },
+        // {
+        //     "id": 5,
+        //     "title": "Building a Design System from Scratch",
+        //     "excerpt": "How we created a scalable design system at TechCorp that improved development velocity and design consistency across 15+ products.",
+        //     "date": "2025-03-22",
+        //     "readTime": "15 min read",
+        //     "category": "Design",
+        //     "featured": true
+        // },
+        // {
+        //     "id": 6,
+        //     "title": "Serverless Architecture: Lessons Learned",
+        //     "excerpt": "Key insights from building and scaling serverless applications using AWS Lambda, including cost optimization and performance tips.",
+        //     "date": "2025-03-08",
+        //     "readTime": "9 min read",
+        //     "category": "Backend",
+        //     "featured": false
+        // }
     ],
-    "categories": ["Accessibility", "CSS", "React", "Career", "Design", "Backend", "JavaScript", "Performance"]
+    "categories": ["Experience", "AI"]
 };
 
 // DOM Elements
@@ -312,7 +313,9 @@ function showBlogPostModal(post) {
             </div>
             <div class="blog-modal__body">
                 <p>${post.excerpt}</p>
-                <p><em>This is a demo portfolio. The full article would be displayed here in a real implementation.</em></p>
+                <div class="blog-modal__read-more">
+                    <a href="${post.mediumLink}" target="_blank" class="btn btn--primary">Read full article on Medium</a>
+                </div>
             </div>
         </div>
     `;
@@ -389,6 +392,15 @@ function showBlogPostModal(post) {
             .blog-modal__body {
                 padding: var(--space-24);
                 line-height: var(--line-height-normal);
+            }
+            .blog-modal__read-more {
+                margin-top: var(--space-24);
+                text-align: center;
+            }
+            .blog-modal__read-more .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: var(--space-8);
             }
         `;
         document.head.appendChild(modalStyles);
