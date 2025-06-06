@@ -573,5 +573,3 @@ improveAccessibility();
 
 // Console message for developers
 console.log('🚀 Portfolio website loaded successfully!');
-console.log('👨‍💻 Built with modern web technologies');
-console.log('📧 Contact: alex.johnson@email.com');
