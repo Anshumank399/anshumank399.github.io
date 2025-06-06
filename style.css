@@ -832,18 +832,18 @@ select.form-control {
     opacity: 0;
     transform: rotate(-180deg) scale(0);
   }
-  
+
   .theme-icon--moon {
     opacity: 1;
     transform: rotate(0deg) scale(1);
   }
-  
+
   /* Override for light mode when manually set */
   [data-color-scheme="light"] .theme-icon--sun {
     opacity: 1;
     transform: rotate(0deg) scale(1);
   }
-  
+
   [data-color-scheme="light"] .theme-icon--moon {
     opacity: 0;
     transform: rotate(180deg) scale(0);
@@ -1645,3 +1645,13 @@ html {
 
 /* Remove the Perplexity font-face and add Google Fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.experience__company a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.experience__company a:hover {
+  color: var(--color-primary);
+}
