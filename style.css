@@ -767,6 +767,89 @@ select.form-control {
   top: 8px;
 }
 
+/* Theme Toggle */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  background: var(--color-secondary-hover);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.theme-icon {
+  position: absolute;
+  transition: all var(--duration-normal) var(--ease-standard);
+  color: var(--color-text);
+}
+
+.theme-icon--sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.theme-icon--moon {
+  opacity: 0;
+  transform: rotate(180deg) scale(0);
+}
+
+/* Dark theme icon states */
+[data-color-scheme="dark"] .theme-icon--sun {
+  opacity: 0;
+  transform: rotate(-180deg) scale(0);
+}
+
+[data-color-scheme="dark"] .theme-icon--moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* System dark mode icon states */
+@media (prefers-color-scheme: dark) {
+  .theme-icon--sun {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+  }
+  
+  .theme-icon--moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  
+  /* Override for light mode when manually set */
+  [data-color-scheme="light"] .theme-icon--sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  
+  [data-color-scheme="light"] .theme-icon--moon {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+  }
+}
+
 /* Main content padding for fixed header */
 .main {
   padding-top: 70px;
@@ -1412,6 +1495,15 @@ select.form-control {
 
   .nav__toggle {
     display: flex;
+  }
+
+  .nav__actions {
+    gap: var(--space-8);
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
   }
 
   .nav__toggle.active .nav__toggle-icon {

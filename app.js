@@ -125,6 +125,7 @@ const skillsSection = document.querySelector('.skills');
 const blogGrid = document.getElementById('blog-grid');
 const blogSearch = document.getElementById('blog-search');
 const categoryFilter = document.getElementById('category-filter');
+const themeToggle = document.getElementById('theme-toggle');
 
 // State
 let currentBlogPosts = [...portfolioData.blogPosts];
@@ -132,11 +133,64 @@ let hasAnimatedSkills = false;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function () {
+    initializeTheme();
     initializeNavigation();
     initializeBlog();
     initializeSkillsAnimation();
     initializeSmoothScrolling();
 });
+
+// Theme Management Functions
+function initializeTheme() {
+    // Get saved theme preference or default to system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    let currentTheme;
+    if (savedTheme) {
+        currentTheme = savedTheme;
+    } else {
+        currentTheme = systemPrefersDark ? 'dark' : 'light';
+    }
+
+    // Apply the theme
+    applyTheme(currentTheme);
+
+    // Add click event listener to theme toggle
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        // Only update if user hasn't manually set a preference
+        if (!localStorage.getItem('theme')) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-color-scheme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    applyTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-color-scheme', theme);
+
+    // Update theme toggle button aria-label
+    if (themeToggle) {
+        const label = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+        themeToggle.setAttribute('aria-label', label);
+    }
+}
+
+function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-color-scheme') || 'light';
+}
 
 // Navigation Functions
 function initializeNavigation() {
@@ -158,7 +212,9 @@ function initializeNavigation() {
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', function (e) {
-        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        if (!navMenu.contains(e.target) &&
+            !navToggle.contains(e.target) &&
+            !themeToggle.contains(e.target)) {
             navMenu.classList.remove('show');
             navToggle.classList.remove('active');
         }
