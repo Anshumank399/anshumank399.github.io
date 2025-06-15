@@ -59,6 +59,17 @@ const portfolioData = {
     "blogPosts": [
         {
             "id": 1,
+            "title": "Claude Code: Dev Life Made Easy or Career Crasher?",
+            "slug": "claude-code",
+            "excerpt": "From prompts to production - how I used Claude Code to rebuild my website and what it says about the future of software development.",
+            "date": "2025-06-15",
+            "readTime": "3 min read",
+            "category": "AI",
+            "featured": true,
+            "mediumLink": "https://anshuman-kirty.medium.com/claude-code-dev-life-made-easy-or-career-crasher-42b88bfda5ae"
+        },
+        {
+            "id": 2,
             "title": "Summer Internship at QuantumBlack AI by McKinsey",
             "slug": "summer-internship-quantumblack-ai-mckinsey",
             "excerpt": "So here I am presenting my reflection on what was one of the most fulfilling summers as an intern at QuantumBlack AI, McKinsey.",
@@ -68,51 +79,6 @@ const portfolioData = {
             "featured": true,
             "mediumLink": "https://medium.com/@anshuman-kirty/summer-internship-experience-quantumblack-ai-by-mckinsey-903c753d8c6d"
         },
-        // {
-        //     "id": 2,
-        //     "title": "The Future of CSS: What's Coming in 2025",
-        //     "excerpt": "Exploring new CSS features like container queries, cascade layers, and color functions that are changing how we style the web.",
-        //     "date": "2025-05-01",
-        //     "readTime": "6 min read",
-        //     "category": "CSS",
-        //     "featured": false
-        // },
-        // {
-        //     "id": 3,
-        //     "title": "Optimizing React Performance: Advanced Techniques",
-        //     "excerpt": "Deep dive into React optimization strategies including memoization, code splitting, and virtual scrolling for large applications.",
-        //     "date": "2025-04-20",
-        //     "readTime": "12 min read",
-        //     "category": "React",
-        //     "featured": true
-        // },
-        // {
-        //     "id": 4,
-        //     "title": "My Journey from Bootcamp to Senior Developer",
-        //     "excerpt": "Reflecting on the challenges, learnings, and growth that shaped my career in tech over the past 5 years.",
-        //     "date": "2025-04-05",
-        //     "readTime": "10 min read",
-        //     "category": "Career",
-        //     "featured": false
-        // },
-        // {
-        //     "id": 5,
-        //     "title": "Building a Design System from Scratch",
-        //     "excerpt": "How we created a scalable design system at TechCorp that improved development velocity and design consistency across 15+ products.",
-        //     "date": "2025-03-22",
-        //     "readTime": "15 min read",
-        //     "category": "Design",
-        //     "featured": true
-        // },
-        // {
-        //     "id": 6,
-        //     "title": "Serverless Architecture: Lessons Learned",
-        //     "excerpt": "Key insights from building and scaling serverless applications using AWS Lambda, including cost optimization and performance tips.",
-        //     "date": "2025-03-08",
-        //     "readTime": "9 min read",
-        //     "category": "Backend",
-        //     "featured": false
-        // }
     ],
     "categories": ["Experience", "AI"]
 };
@@ -357,7 +323,7 @@ function openBlogPost(post) {
     // Update URL without page reload
     const newUrl = `${window.location.origin}${window.location.pathname}#blog/${post.slug}`;
     history.pushState({ blogPost: post.slug }, '', newUrl);
-    
+
     // Show the modal
     showBlogPostModal(post);
 }
@@ -581,7 +547,7 @@ function showBlogPostModal(post) {
     const closeModal = () => {
         document.body.removeChild(modal);
         document.body.style.overflow = '';
-        
+
         // Update URL back to main page
         const newUrl = `${window.location.origin}${window.location.pathname}#blog`;
         history.pushState({}, '', newUrl);
@@ -593,7 +559,7 @@ function showBlogPostModal(post) {
     // Add share button functionality
     const shareButtons = modal.querySelectorAll('.share-btn');
     shareButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const platform = this.getAttribute('data-platform');
             const url = this.getAttribute('data-url');
             const title = this.getAttribute('data-title');
@@ -615,9 +581,9 @@ function shareOnPlatform(platform, url, title) {
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title);
     const encodedText = encodeURIComponent(`${title} - ${url}`);
-    
+
     let shareUrl = '';
-    
+
     switch (platform) {
         case 'twitter':
             shareUrl = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
@@ -638,7 +604,7 @@ function shareOnPlatform(platform, url, title) {
             console.error('Unknown platform:', platform);
             return;
     }
-    
+
     // Open in new window
     window.open(shareUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
 }
@@ -790,18 +756,18 @@ improveAccessibility();
 function initializeBlogRouting() {
     // Handle browser back/forward buttons
     window.addEventListener('popstate', handlePopState);
-    
+
     // Check if we should open a blog post on page load
     checkInitialBlogRoute();
 }
 
 function handlePopState(event) {
     const hash = window.location.hash;
-    
+
     if (hash.startsWith('#blog/')) {
         const slug = hash.replace('#blog/', '');
         const post = findPostBySlug(slug);
-        
+
         if (post) {
             showBlogPostModal(post);
         } else {
@@ -815,7 +781,7 @@ function handlePopState(event) {
             document.body.removeChild(existingModal);
             document.body.style.overflow = '';
         }
-        
+
         // Handle normal section navigation
         if (hash === '#blog') {
             scrollToBlogSection();
@@ -835,11 +801,11 @@ function handlePopState(event) {
 
 function checkInitialBlogRoute() {
     const hash = window.location.hash;
-    
+
     if (hash.startsWith('#blog/')) {
         const slug = hash.replace('#blog/', '');
         const post = findPostBySlug(slug);
-        
+
         if (post) {
             // Small delay to ensure page is fully loaded
             setTimeout(() => {
